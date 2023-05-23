@@ -1,0 +1,56 @@
+en:
+  activerecord:
+    models:
+      products: Product
+    attributes: 
+      product:
+        title: 'Title'
+        description: 'Description'
+        price: 'Price'
+        photo: 'Photo'
+    errors:
+      models:
+        product:
+          attributes: 
+            title: 
+              blank: 'it cant be empty'
+            description: 
+              blank: 'it cant be empty'
+            price: 
+              blank: 'it cant be empty'
+            photo: 
+              blank: 'it cant be empty'
+  common:
+    confirm: 'You`re sure?'
+    back: 'Back'
+    name: 'Description'
+  products: 
+    edit:
+      title: 'Edit product'
+    new: 
+      title: 'New product'
+    index:
+      title: 'Products'
+    create:
+      created: 'Your product has been created successfully'
+    update:
+      updated: 'Your product was updated'
+    destroy:
+      destroyed: 'Your product has been successfully removed'
+  categories:
+    category:
+      edit: 'Edit'
+      delete: 'Delete'
+    index: 
+      title: 'Categories'
+      new: 'Add new'
+    edit:
+      title: 'Edit'
+    new:
+      title: 'New'
+    create:
+      created: 'Your category has been successfully created'
+    update:
+      updated: 'Your category has been successfully updated'
+    destroy:
+      destroyed: 'Your category has been successfully destroyed'
