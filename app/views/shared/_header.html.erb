@@ -1,7 +1,14 @@
 <%= link_to products_path do %>
-  <h1>Vendelo</h1>
+  <h1><%= t('app_name')%></h1>
 <% end %>
 
-
-<%= link_to t('.products'), new_product_path %>
-<%= link_to t('.categories'), new_category_path %>
+<!--%=Current.user.inspect%//ejemplo de visualizacion de usuario que se logeo-->
+<!--%=Reemplazo el path new_product  por la lista products_path-->
+<%= link_to t('.products'), products_path if Current.user %>
+<%= link_to t('.categories'), categories_path if Current.user&.admin %>
+<%= link_to t('.login'), new_session_path unless Current.user %>
+<%= link_to t('.register'), new_user_path unless Current.user %>
+<%= link_to t('.logout'), session_path(Current.user.id),data:{
+  turbo_method: :delete,
+  turbo_confirm: t('common.confirm')
+} if Current.user %>

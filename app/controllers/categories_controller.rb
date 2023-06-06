@@ -1,7 +1,10 @@
 class CategoriesController < ApplicationController
 
+  #Callback que aplica el metodo en todos los metodos de una vez 
+  before_action :authorize!
+
   def index
-    @categories = Category.all
+    @categories = Category.all.order(name: :asc)
   end
 
   def new
@@ -16,15 +19,15 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to categories_url, notice: I18n.t('.created')
-    else 
+      redirect_to categories_url, notice: t('.created')
+    else
       render :new, status: :unprocessable_entity
-    end 
-      
+    end
+
     #Permite escoger con que tipo devolver los datos
     #respond_to do |format|
       #if @category.save
-      #  format.html { redirect_to categories_url, notice: I18n.t('.created') }
+      #  format.html { redirect_to categories_url, notice: t('.created') }
         #format.pdf->ejemplo
       #else
       #  format.html { render :new, status: :unprocessable_entity }
@@ -33,21 +36,18 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @category.update(category_params)
-        redirect_to categories_url, notice: I18n.t('.updated') 
-      else
-        render :edit, status: :unprocessable_entity
-      end
-    end
+
+    if category.update(category_params)
+      redirect_to categories_url, notice: t('.updated')
+  else
+      render :edit, status: :unprocessable_entity
+  end
   end
 
   def destroy
-    @category.destroy
+    category.destroy
 
-    respond_to do |format|
-      redirect_to categories_url, notice: I18n.t('.destroyed') 
-    end
+        redirect_to categories_path, notice: t('.destroyed') , status: :see_other
   end
 
   private

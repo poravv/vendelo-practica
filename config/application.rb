@@ -11,9 +11,13 @@ module Vendelo
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    #Se configuran los dos idiomas de la aplicacion 
     config.i18n.available_locales = [:en, :es]
 
-    #lenguaje por defecto
+    #Lenguaje por defecto
     config.i18n.default_locale = :es
+
+    #Allow multiquery Permitir query async o asincrono
+    config.active_record.async_query_executor = :global_thread_pool
   end
 end

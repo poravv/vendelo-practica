@@ -4,8 +4,9 @@
 <h1 class='title'><%=@product.title %></h1>
 <p class='description'><%=@product.description %></p>
 <span class='price'><%=@product.price %></span>
-<%= link_to 'Editar producto', edit_product_path(@product)%>
-<%= link_to 'Eliminar producto', product_path(@product), data: {
+<!--Aqui se compara si el id del prod es igual al id del creador, se puede reemplazar por if Current.user--->
+<%= link_to t('.edit'), edit_product_path(@product) if @product.owner? %>
+<%= link_to t('.delete'), product_path(@product), data: {
     turbo_method: :delete,
     turbo_confirm: t('common.confirm')
-}%>
+} if @product.owner?%>
