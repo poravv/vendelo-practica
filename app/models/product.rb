@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
     include PgSearch::Model #Buscador
+    include Favoritable
 
     #se incluye el metodo del buscador
     #para probar en rails.console->Product.search_full_text('PS4')
@@ -19,10 +20,11 @@ class Product < ApplicationRecord
     validates :description, presence: true
     validates :price, presence: true
 
+    has_many :favorites, dependent: :destroy
     belongs_to :category
     belongs_to :user, default: -> { Current.user }
 
     def owner? 
-    user_id==Current.user.id
+    user_id==Current.user&.id
     end 
 end

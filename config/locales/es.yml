@@ -24,6 +24,7 @@ es:
     name: 'Descripcion'
     not_logged_in: 'Tienes que hacer login o crearte una cuenta'
     not_authorized: 'No tienes permisos para esta acción'
+    not_found: 'No se ha encontrado'
   shared:
     header:
       add: 'Añadir producto'
@@ -56,6 +57,7 @@ es:
     show:
       delete: 'Eliminar'
       edit: 'Editar'
+      view_more_products: 'Ver más productos de %{username}'
     index:
       title: 'Productos'
       all: 'Todos'
