@@ -85,12 +85,16 @@ class ProductsController <ApplicationController
     end
 
     def product_params_index
-        params.permit( :category_id, :min_price, :max_price, :query_text, :order_by, :page)
+        #Aqui se pasan los parametros permitidos para el filtrado o busqueda
+        params.permit( :category_id, :min_price, :max_price, :query_text, :order_by, :page, :favorites, :user_id)
         
     end
 
     def product 
-        @product =  Product.find(params[:id])
+        
+        #@product =  Product.find(params[:id])
+        #Aplcamos el cacheado para que memorice y evitar varias consultas a la base de datos, se realiza con ||
+        @product ||=  Product.find(params[:id])
     end
 
 end 

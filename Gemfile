@@ -75,3 +75,5 @@ end
 gem "pg_search", "~> 2.3"
 #Gema para la paginacion
 gem "pagy", "~> 6.0"
+
+gem "tailwindcss-rails", "~> 2.0"

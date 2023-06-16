@@ -26,7 +26,8 @@ en:
     not_found: 'Not found'
   shared:
     header:
-      add: 'Add product'
+      add: 'Products'
+      favorites: 'My favorites'
       login: 'Login'
       register: 'Register'
       logout: 'Logout'
@@ -81,3 +82,6 @@ en:
       updated: 'Your category has been successfully updated'
     destroy:
       destroyed: 'Your category has been successfully destroyed'
+  favorites:
+    index:
+      title: 'My favorites'
