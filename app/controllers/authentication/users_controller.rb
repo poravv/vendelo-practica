@@ -9,6 +9,10 @@ class Authentication::UsersController < ApplicationController
       @user = User.new(user_params)
   
       if @user.save
+        #Envio de mail sincrono, no sigue si no se envia el mail, por ello se usa later que es asinrono
+        #UserMailer.welcome.deliver_now
+        UserMailer.with(user: @user).welcome.deliver_later
+        
         session[:user_id] = @user.id
         redirect_to products_path, notice: t('.created')
       else
