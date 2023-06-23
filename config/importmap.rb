@@ -6,3 +6,5 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin "tailwindcss-stimulus-components" # @3.0.4
 pin "@hotwired/stimulus", to: "@hotwired--stimulus.js" # @3.2.1
+#Ya no se utiliza
+#pin "@rails/actioncable", to: "@rails--actioncable.js" # @7.0.5

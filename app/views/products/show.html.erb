@@ -1,9 +1,10 @@
 
-<%= image_tag @product.photo , width: 200 if @product.photo.attached?%>
-
-<h1 class='title'><%=@product.title %></h1>
-<p class='description'><%=@product.description %></p>
-<span class='price'><%=@product.price %></span>
+<!--Se elimina lo anterior para agregar el codigo turbo del detalle -->
+<!--%= image_tag @product.photo , width: 200 if @product.photo.attached?%-->
+<!--h1 class='title'><%=@product.title %></h1-->
+<!--p class='description'><%=@product.description %></p-->
+<!--span class='price'><%=@product.price %></span-->
+<%= render partial: 'products/product_details', locals: { product: @product } %>
 <!--Aqui se compara si el id del prod es igual al id del creador, se puede reemplazar por if Current.user--->
 <%= link_to t('.edit'), edit_product_path(@product) if @product.owner? %>
 <%= link_to t('.delete'), product_path(@product), data: {
@@ -14,3 +15,7 @@
 <%= link_to t('.view_more_products', username: @product.user.username), user_path(@product.user.username) %>
 <!--Se pasa el producto a favoritos como variable local, sin @-->
 <%= render partial: 'favorite', locals: { product: @product } %>
+<!--Llamada al controllador de conexion entre cli y server-->
+<!--div data-controller="websocket-product" data-productid="<%= @product.id %>"></div-->
+<!--Se reemplaza por turbo_stream-->
+<%= turbo_stream_from @product %>

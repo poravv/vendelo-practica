@@ -27,4 +27,9 @@ class Product < ApplicationRecord
     def owner? 
     user_id==Current.user&.id
     end 
+
+    #Metodo que reemplaza el html del cliente por el nuevo partial
+    def broadcast
+        broadcast_replace_to self, partial: 'products/product_details', locals: { product: self }
+    end
 end

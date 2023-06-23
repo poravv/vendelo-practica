@@ -19,5 +19,14 @@ module Vendelo
 
     #Allow multiquery Permitir query async o asincrono
     config.active_record.async_query_executor = :global_thread_pool
+
+    # Background job
+    #Sirve para encolar los jobs en una base de datos local para no perderlo si se reinicia el server
+    #Para instalar seguir estos pasos y luego copiar en este directorio config.active_job.....
+    #brew install redis
+    #bundle add sidekiq
+    #Ejecutar esto para que se levante sidekiq 
+    #bundle exec sidekiq
+    config.active_job.queue_adapter = :sidekiq
   end
 end

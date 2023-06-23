@@ -54,6 +54,9 @@ class ProductsController <ApplicationController
         #@product =  Product.find(params[:id])
         authorize! product
         if product.update(product_params)
+            #Se reemplaza al usar turbo
+            #notify_all_users
+            product.broadcast
             redirect_to products_path, notice: t('.updated')
         else
             render :edit, status: :unprocessable_entity
@@ -95,6 +98,15 @@ class ProductsController <ApplicationController
         #@product =  Product.find(params[:id])
         #Aplcamos el cacheado para que memorice y evitar varias consultas a la base de datos, se realiza con ||
         @product ||=  Product.find(params[:id])
+    end
+
+    def notify_all_users
+        ActionCable.server.broadcast(
+          "product_#{product.id}",
+          {
+            action: "updated"
+          }
+        )
     end
 
 end 
